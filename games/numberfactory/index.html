@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NumberFactory</title>
-    <script type="module" crossorigin src="./assets/index-BgNvK6Dh.js"></script>
+    <script type="module" crossorigin src="./assets/index-qeH7QC83.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/Geometry-DzeswdyX.js">
     <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5qmLynH.js">
     <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-B4pDuSJd.js">
@@ -29,14 +29,14 @@
       <header id="hud-top">
         <div class="nf-topbar">
           <div class="nf-stats">
-            <div class="nf-stat">BEST&nbsp;<span id="best-value">5</span></div>
-            <div class="nf-stat">MOVES&nbsp;<span id="moves-value">0</span></div>
+            <div class="nf-stat"><span id="best-label">BEST</span>&nbsp;<span id="best-value">5</span></div>
+            <div class="nf-stat"><span id="moves-label">MOVES</span>&nbsp;<span id="moves-value">0</span></div>
           </div>
-          <div id="mode-line" class="nf-mode-line">MODE&nbsp;<span id="mode-value">STANDARD</span></div>
+          <div id="mode-line" class="nf-mode-line"><span id="mode-label">MODE</span>&nbsp;<span id="mode-value">STANDARD</span></div>
           <button id="pause-btn" class="nf-btn nf-btn-small" type="button" aria-label="Pause menu">MENU</button>
         </div>
         <div id="target-card">
-          <div class="nf-label">TARGET</div>
+          <div class="nf-label" id="target-label">TARGET</div>
           <div id="target-value">5</div>
         </div>
       </header>
@@ -44,11 +44,11 @@
       <div id="facts" role="button" tabindex="0" aria-label="Open all facts"><div id="facts-track"></div></div>
       <div id="gameover" class="nf-hidden">
         <div class="nf-panel">
-          <h1 class="nf-gameover-title">GAME OVER</h1>
-          <div class="nf-result-row nf-mode-row">MODE&nbsp;<span id="final-mode">STANDARD</span></div>
-          <div class="nf-result-row">TARGET&nbsp;<span id="final-target">5</span></div>
-          <div class="nf-result-row">BEST&nbsp;<span id="final-best">5</span></div>
-          <div class="nf-result-row">MOVES&nbsp;<span id="final-moves">0</span></div>
+          <h1 class="nf-gameover-title" id="gameover-title">GAME OVER</h1>
+          <div class="nf-result-row nf-mode-row"><span id="final-mode-label">MODE</span>&nbsp;<span id="final-mode">STANDARD</span></div>
+          <div class="nf-result-row"><span id="final-target-label">TARGET</span>&nbsp;<span id="final-target">5</span></div>
+          <div class="nf-result-row"><span id="final-best-label">BEST</span>&nbsp;<span id="final-best">5</span></div>
+          <div class="nf-result-row"><span id="final-moves-label">MOVES</span>&nbsp;<span id="final-moves">0</span></div>
           <div id="newbest-badge" class="nf-hidden">★ NEW BEST ★</div>
           <button id="again-btn" class="nf-btn" type="button">RESTART</button>
           <button id="gameover-menu-btn" class="nf-btn" type="button">MAIN MENU</button>
@@ -56,7 +56,7 @@
       </div>
       <div id="pause" class="nf-screen nf-overlay nf-hidden">
         <div class="nf-panel">
-          <h1 class="nf-pause-title">PAUSED</h1>
+          <h1 class="nf-pause-title" id="pause-title">PAUSED</h1>
           <button id="resume-btn" class="nf-btn nf-btn-primary" type="button">RESUME</button>
           <button id="pause-settings-btn" class="nf-btn" type="button">SETTINGS</button>
           <button id="pause-restart-btn" class="nf-btn" type="button">RESTART</button>
@@ -73,7 +73,7 @@
             <span class="nf-mini-tile nf-mini-even">4</span>
             <span class="nf-mini-tile nf-mini-odd">5</span>
           </div>
-          <div class="nf-menu-tagline">Add adjacent numbers.<br />Reach the target exactly.</div>
+          <div class="nf-menu-tagline" id="menu-tagline">Add adjacent numbers.<br />Reach the target exactly.</div>
           <div id="build-label" class="nf-build-label"></div>
           <button id="continue-btn" class="nf-btn nf-hidden" type="button">CONTINUE</button>
           <button id="newgame-btn" class="nf-btn nf-btn-primary" type="button">NEW GAME</button>
@@ -85,7 +85,7 @@
         <div class="nf-panel nf-difficulty-panel">
           <div class="nf-difficulty-head">
             <button id="difficulty-back" class="nf-btn nf-btn-small" type="button" aria-label="Back to main menu">←</button>
-            <h1 class="nf-difficulty-title">CHOOSE DIFFICULTY</h1>
+            <h1 class="nf-difficulty-title" id="difficulty-title">CHOOSE DIFFICULTY</h1>
           </div>
           <div id="difficulty-list" class="nf-difficulty-list"></div>
         </div>
@@ -94,7 +94,7 @@
         <div class="nf-panel nf-archive-panel">
           <div class="nf-difficulty-head">
             <button id="archive-back" class="nf-btn nf-btn-small" type="button" aria-label="Back to main menu">←</button>
-            <h1 class="nf-difficulty-title">COLLECTION</h1>
+            <h1 class="nf-difficulty-title" id="archive-title">COLLECTION</h1>
           </div>
           <div id="archive-counters" class="nf-archive-counters"></div>
           <div class="nf-archive-body">
@@ -122,20 +122,24 @@
         <div class="nf-panel nf-settings-panel">
           <div class="nf-difficulty-head">
             <button id="settings-back" class="nf-btn nf-btn-small" type="button" aria-label="Back to main menu">←</button>
-            <h1 class="nf-difficulty-title">SETTINGS</h1>
+            <h1 class="nf-difficulty-title" id="settings-title">SETTINGS</h1>
           </div>
           <div class="nf-setting-row">
-            <span class="nf-setting-label">SOUND</span>
+            <span class="nf-setting-label" id="sound-label">SOUND</span>
             <button id="sound-toggle" class="nf-btn nf-btn-small nf-toggle" type="button">ON</button>
           </div>
           <div class="nf-setting-row">
-            <span class="nf-setting-label">MUSIC</span>
+            <span class="nf-setting-label" id="music-label">MUSIC</span>
             <button id="music-toggle" class="nf-btn nf-btn-small nf-toggle" type="button">ON</button>
           </div>
-          <div class="nf-settings-note">Music loops three local tracks and works offline. It starts after your first tap (mobile autoplay rule).</div>
+          <div class="nf-settings-note" id="music-note">Music loops three local tracks and works offline. It starts after your first tap (mobile autoplay rule).</div>
+          <div class="nf-setting-row">
+            <span class="nf-setting-label" id="language-label">LANGUAGE</span>
+            <button id="lang-toggle" class="nf-btn nf-btn-small nf-toggle" type="button">EN</button>
+          </div>
           <div id="settings-danger" class="nf-settings-danger">
             <button id="reset-progress-btn" class="nf-btn nf-btn-danger" type="button">RESET ALL PROGRESS</button>
-            <div class="nf-settings-note">Erases best scores, the number collection and the current run. Sound and music switches stay.</div>
+            <div class="nf-settings-note" id="reset-note">Erases best scores, the number collection and the current run. Sound and music switches stay.</div>
           </div>
         </div>
       </div>
@@ -159,10 +163,10 @@
           </div>
           <div class="nf-viewer-scroll">
             <div id="viewer-curated-wrap">
-              <div class="nf-viewer-section">CURATED FACTS</div>
+              <div class="nf-viewer-section" id="viewer-curated-title">CURATED FACTS</div>
               <div id="viewer-curated"></div>
             </div>
-            <div class="nf-viewer-section">MATHEMATICS</div>
+            <div class="nf-viewer-section" id="viewer-generated-title">MATHEMATICS</div>
             <div id="viewer-generated"></div>
           </div>
         </div>
