@@ -15,36 +15,33 @@
     <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NumberFactory</title>
-    <script type="module" crossorigin src="./assets/index-Cotzr7ay.js"></script>
+    <script type="module" crossorigin src="./assets/index-NeAxzTJC.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/Geometry-DzeswdyX.js">
     <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5qmLynH.js">
     <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-B4pDuSJd.js">
     <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-CXDMv5mc.js">
     <link rel="modulepreload" crossorigin href="./assets/CanvasPool-C1er97Gh.js">
     <link rel="modulepreload" crossorigin href="./assets/BufferResource-DG8LxMfw.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-_x9g6K6B.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-C7_TN26U.css">
   <script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
   <body>
     <div id="app">
       <header id="hud-top">
-        <div class="nf-title">NUMBERFACTORY</div>
+        <div class="nf-topbar">
+          <div class="nf-stats">
+            <div class="nf-stat">BEST&nbsp;<span id="best-value">5</span></div>
+            <div class="nf-stat">MOVES&nbsp;<span id="moves-value">0</span></div>
+          </div>
+          <button id="pause-btn" class="nf-btn nf-btn-small" type="button" aria-label="Pause menu">MENU</button>
+        </div>
         <div id="mode-line" class="nf-mode-line">MODE&nbsp;<span id="mode-value">STANDARD</span></div>
         <div id="target-card">
           <div class="nf-label">TARGET</div>
           <div id="target-value">5</div>
-          <div id="target-props">ODD • PRIME</div>
         </div>
       </header>
       <div id="stage"></div>
-      <div id="facts"><span id="facts-tag">∑</span><span id="facts-text"></span></div>
-      <footer id="hud-bottom">
-        <div class="nf-stat">BEST&nbsp;<span id="best-value">5</span></div>
-        <div class="nf-stat">MOVES&nbsp;<span id="moves-value">0</span></div>
-        <button id="facts-btn" class="nf-btn nf-btn-small" type="button">ⓘ FACTS</button>
-        <button id="sound-btn" class="nf-btn nf-btn-small" type="button">SOUND ON</button>
-        <button id="menu-btn" class="nf-btn nf-btn-small" type="button">MENU</button>
-        <button id="restart-btn" class="nf-btn" type="button">RESTART</button>
-      </footer>
+      <div id="facts" role="button" tabindex="0" aria-label="Open all facts"><div id="facts-track"></div></div>
       <div id="gameover" class="nf-hidden">
         <div class="nf-panel">
           <h1 class="nf-gameover-title">GAME OVER</h1>
@@ -55,6 +52,15 @@
           <div id="newbest-badge" class="nf-hidden">★ NEW BEST ★</div>
           <button id="again-btn" class="nf-btn" type="button">RESTART</button>
           <button id="gameover-menu-btn" class="nf-btn" type="button">MAIN MENU</button>
+        </div>
+      </div>
+      <div id="pause" class="nf-screen nf-overlay nf-hidden">
+        <div class="nf-panel">
+          <h1 class="nf-pause-title">PAUSED</h1>
+          <button id="resume-btn" class="nf-btn nf-btn-primary" type="button">RESUME</button>
+          <button id="pause-settings-btn" class="nf-btn" type="button">SETTINGS</button>
+          <button id="pause-restart-btn" class="nf-btn" type="button">RESTART</button>
+          <button id="pause-menu-btn" class="nf-btn" type="button">MAIN MENU</button>
         </div>
       </div>
       <div id="menu" class="nf-screen nf-hidden">
@@ -71,6 +77,7 @@
           <button id="continue-btn" class="nf-btn nf-hidden" type="button">CONTINUE</button>
           <button id="newgame-btn" class="nf-btn nf-btn-primary" type="button">NEW GAME</button>
           <button id="archive-btn" class="nf-btn" type="button">NUMBER ARCHIVE</button>
+          <button id="settings-btn" class="nf-btn" type="button">SETTINGS</button>
         </div>
       </div>
       <div id="difficulty" class="nf-screen nf-hidden">
@@ -110,6 +117,27 @@
         </div>
       </div>
       <div id="archive-toast" class="nf-hidden"></div>
+      <div id="settings" class="nf-screen nf-hidden">
+        <div class="nf-panel nf-settings-panel">
+          <div class="nf-difficulty-head">
+            <button id="settings-back" class="nf-btn nf-btn-small" type="button" aria-label="Back to main menu">←</button>
+            <h1 class="nf-difficulty-title">SETTINGS</h1>
+          </div>
+          <div class="nf-setting-row">
+            <span class="nf-setting-label">SOUND</span>
+            <button id="sound-toggle" class="nf-btn nf-btn-small nf-toggle" type="button">ON</button>
+          </div>
+          <div class="nf-setting-row">
+            <span class="nf-setting-label">MUSIC</span>
+            <button id="music-toggle" class="nf-btn nf-btn-small nf-toggle" type="button">ON</button>
+          </div>
+          <div class="nf-settings-note">There is no music in the game yet — the MUSIC switch is saved for the future.</div>
+          <div id="settings-danger" class="nf-settings-danger">
+            <button id="reset-progress-btn" class="nf-btn nf-btn-danger" type="button">RESET ALL PROGRESS</button>
+            <div class="nf-settings-note">Erases best scores, the number archive and the current run. Sound and music switches stay.</div>
+          </div>
+        </div>
+      </div>
       <div id="confirm" class="nf-screen nf-overlay nf-hidden">
         <div class="nf-panel">
           <h1 id="confirm-title" class="nf-confirm-title">START NEW GAME?</h1>
