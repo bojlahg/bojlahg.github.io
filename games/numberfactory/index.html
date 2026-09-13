@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#171d33" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="NumberFactory" />
+    <link rel="icon" type="image/png" href="./assets/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>NumberFactory</title>
+    <script type="module" crossorigin src="./assets/index-DlwkS7Pu.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/Geometry-DzeswdyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5qmLynH.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-B4pDuSJd.js">
+    <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-CXDMv5mc.js">
+    <link rel="modulepreload" crossorigin href="./assets/CanvasPool-C1er97Gh.js">
+    <link rel="modulepreload" crossorigin href="./assets/BufferResource-DG8LxMfw.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DU5ftlBs.css">
+  <script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
+  <body>
+    <div id="app">
+      <header id="hud-top">
+        <div class="nf-title">NUMBERFACTORY</div>
+        <div id="mode-line" class="nf-mode-line">MODE&nbsp;<span id="mode-value">STANDARD</span></div>
+        <div id="target-card">
+          <div class="nf-label">TARGET</div>
+          <div id="target-value">5</div>
+          <div id="target-props">ODD • PRIME</div>
+        </div>
+      </header>
+      <div id="stage"></div>
+      <div id="facts"><span id="facts-tag">∑</span><span id="facts-text"></span></div>
+      <footer id="hud-bottom">
+        <div class="nf-stat">BEST&nbsp;<span id="best-value">5</span></div>
+        <div class="nf-stat">MOVES&nbsp;<span id="moves-value">0</span></div>
+        <button id="facts-btn" class="nf-btn nf-btn-small" type="button">ⓘ FACTS</button>
+        <button id="sound-btn" class="nf-btn nf-btn-small" type="button">SOUND ON</button>
+        <button id="menu-btn" class="nf-btn nf-btn-small" type="button">MENU</button>
+        <button id="restart-btn" class="nf-btn" type="button">RESTART</button>
+      </footer>
+      <div id="gameover" class="nf-hidden">
+        <div class="nf-panel">
+          <h1 class="nf-gameover-title">GAME OVER</h1>
+          <div class="nf-result-row nf-mode-row">MODE&nbsp;<span id="final-mode">STANDARD</span></div>
+          <div class="nf-result-row">TARGET&nbsp;<span id="final-target">5</span></div>
+          <div class="nf-result-row">BEST&nbsp;<span id="final-best">5</span></div>
+          <div class="nf-result-row">MOVES&nbsp;<span id="final-moves">0</span></div>
+          <div id="newbest-badge" class="nf-hidden">★ NEW BEST ★</div>
+          <button id="again-btn" class="nf-btn" type="button">RESTART</button>
+          <button id="gameover-menu-btn" class="nf-btn" type="button">MAIN MENU</button>
+        </div>
+      </div>
+      <div id="menu" class="nf-screen nf-hidden">
+        <div class="nf-panel nf-menu-panel">
+          <h1 class="nf-menu-title">NUMBERFACTORY</h1>
+          <div class="nf-menu-tiles" aria-hidden="true">
+            <span class="nf-mini-tile nf-mini-odd">1</span>
+            <span class="nf-mini-tile nf-mini-even">2</span>
+            <span class="nf-mini-tile nf-mini-odd">3</span>
+            <span class="nf-mini-tile nf-mini-even">4</span>
+            <span class="nf-mini-tile nf-mini-odd">5</span>
+          </div>
+          <div class="nf-menu-tagline">Add adjacent numbers.<br />Reach the target exactly.</div>
+          <button id="continue-btn" class="nf-btn nf-hidden" type="button">CONTINUE</button>
+          <button id="newgame-btn" class="nf-btn nf-btn-primary" type="button">NEW GAME</button>
+        </div>
+      </div>
+      <div id="difficulty" class="nf-screen nf-hidden">
+        <div class="nf-panel nf-difficulty-panel">
+          <div class="nf-difficulty-head">
+            <button id="difficulty-back" class="nf-btn nf-btn-small" type="button" aria-label="Back to main menu">←</button>
+            <h1 class="nf-difficulty-title">CHOOSE DIFFICULTY</h1>
+          </div>
+          <div id="difficulty-list" class="nf-difficulty-list"></div>
+        </div>
+      </div>
+      <div id="confirm" class="nf-screen nf-overlay nf-hidden">
+        <div class="nf-panel">
+          <h1 id="confirm-title" class="nf-confirm-title">START NEW GAME?</h1>
+          <p id="confirm-text" class="nf-confirm-text">The current run will be lost.</p>
+          <button id="confirm-yes" class="nf-btn nf-btn-primary" type="button">NEW GAME</button>
+          <button id="confirm-no" class="nf-btn" type="button">CANCEL</button>
+        </div>
+      </div>
+      <div id="facts-viewer" class="nf-hidden">
+        <div class="nf-panel nf-viewer-panel">
+          <div class="nf-viewer-head">
+            <div>
+              <h1 id="viewer-title" class="nf-viewer-title">FACTS</h1>
+              <div id="viewer-props" class="nf-viewer-props"></div>
+              <div id="viewer-factor" class="nf-viewer-factor"></div>
+            </div>
+            <button id="viewer-close" class="nf-btn nf-btn-small" type="button">✕</button>
+          </div>
+          <div class="nf-viewer-scroll">
+            <div id="viewer-curated-wrap">
+              <div class="nf-viewer-section">CURATED FACTS</div>
+              <div id="viewer-curated"></div>
+            </div>
+            <div class="nf-viewer-section">MATHEMATICS</div>
+            <div id="viewer-generated"></div>
+            <details id="viewer-sources" class="nf-hidden">
+              <summary>Sources</summary>
+              <div id="viewer-sources-list"></div>
+            </details>
+          </div>
+        </div>
+      </div>
+      <div id="ui"></div>
+    </div>
+  </body>
+</html>
