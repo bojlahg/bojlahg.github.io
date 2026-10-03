@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NumberFactory</title>
-    <script type="module" crossorigin src="./assets/index-DHDVM6Ht.js"></script>
+    <script type="module" crossorigin src="./assets/index-zsTa3HI0.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/Geometry-CZGVBKwE.js">
     <link rel="modulepreload" crossorigin href="./assets/Filter-DM8SVgg4.js">
     <link rel="modulepreload" crossorigin href="./assets/canvasUtils-BwcAxi36.js">
@@ -26,7 +26,7 @@
     <link rel="modulepreload" crossorigin href="./assets/GraphicsContext-2whGo5rH.js">
     <link rel="modulepreload" crossorigin href="./assets/CanvasPool-BaexORx5.js">
     <link rel="modulepreload" crossorigin href="./assets/BufferResource-CsatF336.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-Gq2NS1hy.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DST6gQjz.css">
   </head>
   <body>
     <div id="app">
@@ -59,6 +59,7 @@
           <div id="newbest-badge" class="nf-hidden">★ NEW BEST ★</div>
           <button id="again-btn" class="nf-btn" type="button">RESTART</button>
           <button id="gameover-menu-btn" class="nf-btn" type="button">MAIN MENU</button>
+          <button id="gameover-signin-btn" class="nf-btn nf-hidden" type="button">SIGN IN FOR THE LEADERBOARD</button>
         </div>
       </div>
       <div id="pause" class="nf-screen nf-overlay nf-hidden" role="dialog" aria-modal="true" aria-labelledby="pause-title">
@@ -155,6 +156,12 @@
             <span class="nf-setting-label" id="tutorial-label">TUTORIAL</span>
             <button id="replay-tutorial-btn" class="nf-btn nf-btn-small nf-toggle" type="button">REPLAY TUTORIAL</button>
           </div>
+          <!-- Portal account (Yandex build only; stays hidden elsewhere). -->
+          <div class="nf-setting-row nf-hidden" id="account-row">
+            <span class="nf-setting-label" id="account-label">ACCOUNT</span>
+            <button id="account-btn" class="nf-btn nf-btn-small nf-toggle" type="button">SIGN IN</button>
+          </div>
+          <div class="nf-settings-note nf-hidden" id="account-note">Sign in to keep progress on every device.</div>
           <div id="settings-danger" class="nf-settings-danger">
             <button id="reset-progress-btn" class="nf-btn nf-btn-danger" type="button">RESET ALL PROGRESS</button>
             <div class="nf-settings-note" id="reset-note">Erases best scores, the number collection and the current run. Sound and music switches stay.</div>
