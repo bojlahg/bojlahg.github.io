@@ -15,14 +15,18 @@
     <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NumberFactory</title>
-    <script type="module" crossorigin src="./assets/index-De-z5Zpn.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/Geometry-DzeswdyX.js">
-    <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5qmLynH.js">
-    <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-B4pDuSJd.js">
-    <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-CXDMv5mc.js">
-    <link rel="modulepreload" crossorigin href="./assets/CanvasPool-C1er97Gh.js">
-    <link rel="modulepreload" crossorigin href="./assets/BufferResource-DG8LxMfw.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-BLuSrWtx.css">
+    <script type="module" crossorigin src="./assets/index-CU6j5JqU.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/Geometry-CZGVBKwE.js">
+    <link rel="modulepreload" crossorigin href="./assets/Filter-DM8SVgg4.js">
+    <link rel="modulepreload" crossorigin href="./assets/canvasUtils-BwcAxi36.js">
+    <link rel="modulepreload" crossorigin href="./assets/Cache-DOCLyTZt.js">
+    <link rel="modulepreload" crossorigin href="./assets/GCManagedHash-1mXRsHGx.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-CqGxZEHS.js">
+    <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-CCNGb0nl.js">
+    <link rel="modulepreload" crossorigin href="./assets/GraphicsContext-2whGo5rH.js">
+    <link rel="modulepreload" crossorigin href="./assets/CanvasPool-BaexORx5.js">
+    <link rel="modulepreload" crossorigin href="./assets/BufferResource-CsatF336.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DFFGWGKV.css">
   </head>
   <body>
     <div id="app">
@@ -65,7 +69,7 @@
       </div>
       <div id="menu" class="nf-screen nf-hidden">
         <div class="nf-panel nf-menu-panel">
-          <h1 class="nf-menu-title">NUMBERFACTORY</h1>
+          <h1 class="nf-menu-title"><img id="menu-logo" alt="NumberFactory" width="768" height="353" /></h1>
           <div class="nf-menu-tiles" aria-hidden="true">
             <span class="nf-mini-tile nf-mini-odd">1</span>
             <span class="nf-mini-tile nf-mini-even">2</span>
@@ -73,7 +77,10 @@
             <span class="nf-mini-tile nf-mini-even">4</span>
             <span class="nf-mini-tile nf-mini-odd">5</span>
           </div>
-          <div class="nf-menu-tagline" id="menu-tagline">Add adjacent numbers.<br />Reach the target exactly.</div>
+          <div class="nf-menu-welcome">
+            <div class="nf-robot" aria-hidden="true"></div>
+            <div class="nf-menu-tagline" id="menu-tagline">Add adjacent numbers.<br />Reach the target exactly.</div>
+          </div>
           <div id="build-label" class="nf-build-label"></div>
           <button id="continue-btn" class="nf-btn nf-hidden" type="button">CONTINUE</button>
           <button id="newgame-btn" class="nf-btn nf-btn-primary" type="button">NEW GAME</button>
