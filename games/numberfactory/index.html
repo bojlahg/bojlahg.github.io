@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NumberFactory</title>
-    <script type="module" crossorigin src="./assets/index-E_rrxfR7.js"></script>
+    <script type="module" crossorigin src="./assets/index-tcAkfdi9.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/Geometry-CZGVBKwE.js">
     <link rel="modulepreload" crossorigin href="./assets/Filter-DM8SVgg4.js">
     <link rel="modulepreload" crossorigin href="./assets/canvasUtils-BwcAxi36.js">
@@ -26,7 +26,7 @@
     <link rel="modulepreload" crossorigin href="./assets/GraphicsContext-2whGo5rH.js">
     <link rel="modulepreload" crossorigin href="./assets/CanvasPool-BaexORx5.js">
     <link rel="modulepreload" crossorigin href="./assets/BufferResource-CsatF336.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-Bpw-R68D.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Gq2NS1hy.css">
   </head>
   <body>
     <div id="app">
@@ -39,9 +39,12 @@
           <div id="mode-line" class="nf-mode-line"><span id="mode-label">MODE</span>&nbsp;<span id="mode-value">STANDARD</span></div>
           <button id="pause-btn" class="nf-btn nf-btn-small" type="button" aria-label="Pause menu">MENU</button>
         </div>
-        <div id="target-card">
-          <div class="nf-label" id="target-label">TARGET</div>
-          <div id="target-value">5</div>
+        <div class="nf-target-row">
+          <div class="nf-robot nf-game-robot" aria-hidden="true"></div>
+          <div id="target-card">
+            <div class="nf-label" id="target-label">TARGET</div>
+            <div id="target-value">5</div>
+          </div>
         </div>
       </header>
       <div id="stage"></div>
