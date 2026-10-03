@@ -15,14 +15,14 @@
     <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NumberFactory</title>
-    <script type="module" crossorigin src="./assets/index-CJ7LW5l7.js"></script>
+    <script type="module" crossorigin src="./assets/index-D71p4iJ2.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/Geometry-DzeswdyX.js">
     <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5qmLynH.js">
     <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-B4pDuSJd.js">
     <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-CXDMv5mc.js">
     <link rel="modulepreload" crossorigin href="./assets/CanvasPool-C1er97Gh.js">
     <link rel="modulepreload" crossorigin href="./assets/BufferResource-DG8LxMfw.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-DofButA5.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DtDczWkk.css">
   </head>
   <body>
     <div id="app">
@@ -42,7 +42,7 @@
       </header>
       <div id="stage"></div>
       <div id="facts" role="button" tabindex="0" aria-label="Open all facts"><div id="facts-track"></div></div>
-      <div id="gameover" class="nf-hidden">
+      <div id="gameover" class="nf-hidden" role="dialog" aria-modal="true" aria-labelledby="gameover-title">
         <div class="nf-panel">
           <h1 class="nf-gameover-title" id="gameover-title">GAME OVER</h1>
           <div class="nf-result-row nf-mode-row"><span id="final-mode-label">MODE</span>&nbsp;<span id="final-mode">STANDARD</span></div>
@@ -54,7 +54,7 @@
           <button id="gameover-menu-btn" class="nf-btn" type="button">MAIN MENU</button>
         </div>
       </div>
-      <div id="pause" class="nf-screen nf-overlay nf-hidden">
+      <div id="pause" class="nf-screen nf-overlay nf-hidden" role="dialog" aria-modal="true" aria-labelledby="pause-title">
         <div class="nf-panel">
           <h1 class="nf-pause-title" id="pause-title">PAUSED</h1>
           <button id="resume-btn" class="nf-btn nf-btn-primary" type="button">RESUME</button>
@@ -147,7 +147,7 @@
           </div>
         </div>
       </div>
-      <div id="confirm" class="nf-screen nf-overlay nf-hidden">
+      <div id="confirm" class="nf-screen nf-overlay nf-hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
         <div class="nf-panel">
           <h1 id="confirm-title" class="nf-confirm-title">START NEW GAME?</h1>
           <p id="confirm-text" class="nf-confirm-text">The current run will be lost.</p>
@@ -155,7 +155,7 @@
           <button id="confirm-no" class="nf-btn" type="button">CANCEL</button>
         </div>
       </div>
-      <div id="facts-viewer" class="nf-hidden">
+      <div id="facts-viewer" class="nf-hidden" role="dialog" aria-modal="true" aria-labelledby="viewer-title">
         <div class="nf-panel nf-viewer-panel">
           <div class="nf-viewer-head">
             <div>
@@ -163,7 +163,7 @@
               <div id="viewer-props" class="nf-viewer-props"></div>
               <div id="viewer-factor" class="nf-viewer-factor"></div>
             </div>
-            <button id="viewer-close" class="nf-btn nf-btn-small" type="button">✕</button>
+            <button id="viewer-close" class="nf-btn nf-btn-small" type="button" aria-label="Close">✕</button>
           </div>
           <div class="nf-viewer-scroll">
             <div id="viewer-curated-wrap">
@@ -180,14 +180,14 @@
         <button id="tutorial-skip" class="nf-btn nf-btn-small" type="button">SKIP</button>
       </div>
       <div id="tutorial-arrow" class="nf-hidden" aria-hidden="true">→</div>
-      <div id="tutorial-complete" class="nf-screen nf-overlay nf-hidden">
+      <div id="tutorial-complete" class="nf-screen nf-overlay nf-hidden" role="dialog" aria-modal="true" aria-labelledby="tutorial-complete-title">
         <div class="nf-panel">
           <h1 id="tutorial-complete-title" class="nf-confirm-title">TRAINING COMPLETE</h1>
           <p id="tutorial-complete-text" class="nf-confirm-text">The factory is yours now.</p>
           <button id="tutorial-continue-btn" class="nf-btn nf-btn-primary" type="button">CONTINUE</button>
         </div>
       </div>
-      <div id="tutorial-offer" class="nf-screen nf-overlay nf-hidden">
+      <div id="tutorial-offer" class="nf-screen nf-overlay nf-hidden" role="dialog" aria-modal="true" aria-labelledby="tutorial-offer-title">
         <div class="nf-panel">
           <h1 id="tutorial-offer-title" class="nf-confirm-title">PLAY THE TUTORIAL?</h1>
           <p id="tutorial-offer-text" class="nf-confirm-text">A short guided run.</p>
